@@ -1,0 +1,35 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cmake cross
+
+NAME="mingw64-x86_64-openjpeg2"
+VERSION=2.1.0
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="JPEG 2000 codec for Win64 toolchain"
+DESCRIPTION="The OpenJPEG library is an open-source JPEG 2000 codec written
+in C language. It has been developed in order to promote the use of JPEG 2000,
+the new still-image compression standard from the Joint Photographic Experts
+Group (JPEG)."
+HOMEPAGE="http://www.openjpeg.org/"
+SRC_URI="https://github.com/uclouvain/openjpeg/archive/version.${VERSION%.0}/openjpeg-version.${VERSION%.0}.tar.gz"
+SRC_DIR="openjpeg-version.${VERSION%.0}"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/openjpeg2_remove-thirdparty.patch
+	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/openjpeg2_bigendian.patch
+	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/940100c28ae28931722290794889cf84a92c5f6f.patch
+	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/0fa5a17c98c4b8f9ee2286f4f0a50cf52a5fccb0.patch
+	2.1.0-cmake-install.patch
+"
+
+CYGPORT_USE_UNSTABLE_API=1
+src_unpack_hook() {
+	rm -fr thirdparty/
+}
+
+CYGCMAKE_ARGS="
+	-DOPENJPEG_INSTALL_DOC_DIR=/usr/share/doc/${NAME}
+	${NOTYET+-DBUILD_MJ2=ON -DBUILD_JPWL=ON -DBUILD_JPIP=ON -DBUILD_JP3D=ON}
+	-DBUILD_CODEC=OFF
+	-DBUILD_DOC=OFF
+	-DBUILD_PKGCONFIG_FILES=ON
+"
