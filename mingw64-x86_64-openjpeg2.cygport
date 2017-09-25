@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cmake cross
 
 NAME="mingw64-x86_64-openjpeg2"
-VERSION=2.1.2
+VERSION=2.2.0
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="JPEG 2000 codec for Win64 toolchain"
@@ -11,8 +11,8 @@ in C language. It has been developed in order to promote the use of JPEG 2000,
 the new still-image compression standard from the Joint Photographic Experts
 Group (JPEG)."
 HOMEPAGE="http://www.openjpeg.org/"
-SRC_URI="https://github.com/uclouvain/openjpeg/archive/v${VERSION%.0}/openjpeg-v${VERSION%.0}.tar.gz"
-SRC_DIR="openjpeg-${VERSION%.0}"
+SRC_URI="https://github.com/uclouvain/openjpeg/archive/v${VERSION}/openjpeg-v${VERSION}.tar.gz"
+SRC_DIR="openjpeg-${VERSION}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/openjpeg2_remove-thirdparty.patch
 	2.1.0-cmake-install.patch
