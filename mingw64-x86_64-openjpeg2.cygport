@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cmake cross
 
 NAME="mingw64-x86_64-openjpeg2"
-VERSION=2.2.0
+VERSION=2.3.0
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="JPEG 2000 codec for Win64 toolchain"
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.openjpeg.org/"
 SRC_URI="https://github.com/uclouvain/openjpeg/archive/v${VERSION}/openjpeg-v${VERSION}.tar.gz"
 SRC_DIR="openjpeg-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/openjpeg2.git/plain/openjpeg2_remove-thirdparty.patch
+	https://src.fedoraproject.org/cgit/rpms/openjpeg2.git/plain/openjpeg2_remove-thirdparty.patch
 	2.1.0-cmake-install.patch
 "
 
